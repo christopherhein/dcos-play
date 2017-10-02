@@ -1,0 +1,30 @@
+{
+  "id": "mx/gateway",
+  "cpus": 0.25,
+  "mem": 256,
+  "instances": 1,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "christopherhein/mx-gateway:latest",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "hostPort": 0,
+          "containerPort": 4000,
+          "servicePort": 10002
+        }
+      ]
+    }
+  },
+  "env":{
+    "TRACKS_HOSTT":"marathon-lb-internal.marathon.mesos",
+    "TRACKS_PORT":"10003",
+    "LAPTIMES_HOST":"marathon-lb-internal.marathon.mesos",
+    "LAPTIMES_PORT":"10004"
+  },
+  "labels":{
+    "HAPROXY_0_VHOST":"mx-api.demo.iamchristopherhein.com",
+    "HAPROXY_GROUP":"external"
+  }
+}

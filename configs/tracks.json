@@ -1,0 +1,23 @@
+{
+  "id": "mx/tracks",
+  "cpus": 0.25,
+  "mem": 256,
+  "instances": 1,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "christopherhein/mx-tracks:latest",
+      "network": "BRIDGE",
+      "portMappings": [
+        {
+          "hostPort": 0,
+          "containerPort": 4567,
+          "servicePort": 10003
+        }
+      ]
+    }
+  },
+  "labels": {
+    "HAPROXY_GROUP": "internal"
+  }
+}
